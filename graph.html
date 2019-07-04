@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Graph</title>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.7/d3.min.js"></script>
+		<script>
+function makeDemo1() {
+	d3.csv("examples-simple.csv")
+		.then(data => {
+			d3.select("svg")
+				.selectAll("circle")
+				.data(data)
+				.enter()
+				.append("circle")
+				.attr("r", 5)
+				.attr("fill", "red")
+				.attr("cx", d => d["x"])
+				.attr("cy", d => d["y"]);
+		});
+}
+		</script>
+	</head>
+	<body onload="makeDemo1()">
+		<svg id="demo1" width="600" height="300" style="background: lightgrey"></svg>
+	</body>
+</html>
